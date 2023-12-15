@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "390180966799",
+    "project_id": "red-button-b6c84",
+    "storage_bucket": "red-button-b6c84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390180966799:android:9ec4ebe24db50633207bfa",
+        "android_client_info": {
+          "package_name": "red.button.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDixdhxvhdykYqWit4dSYlgr6dyHC0bwfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
