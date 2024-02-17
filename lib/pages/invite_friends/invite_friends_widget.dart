@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,10 +10,10 @@ import 'invite_friends_model.dart';
 export 'invite_friends_model.dart';
 
 class InviteFriendsWidget extends StatefulWidget {
-  const InviteFriendsWidget({Key? key}) : super(key: key);
+  const InviteFriendsWidget({super.key});
 
   @override
-  _InviteFriendsWidgetState createState() => _InviteFriendsWidgetState();
+  State<InviteFriendsWidget> createState() => _InviteFriendsWidgetState();
 }
 
 class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
@@ -72,7 +71,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -85,12 +84,12 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 10.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         'Send your friends an invite to their email and get them to join the Red Button community.',
                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -103,7 +102,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 20.0),
                             child: TextFormField(
                               controller: _model.textController,
@@ -152,7 +151,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 await launchUrl(Uri(
@@ -162,7 +161,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                                       'subject':
                                           'Join the Red Button community!',
                                       'body':
-                                          'Download the Red Button App now and join our community of safety aware extreme athletes. (Link coming soon!)',
+                                          'Download the Red Button App now and join our community of safety aware extreme athletes. https://redbutton.pvcdigitaldesigns.co.za/',
                                     }
                                         .entries
                                         .map((MapEntry<String, String> e) =>
@@ -181,7 +180,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                                             fontSize: 14.0,
                                           ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -189,16 +188,16 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                                 );
                               },
                               text: 'Send Invite',
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.outgoing_mail,
                                 size: 22.0,
                               ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 45.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -208,7 +207,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                                       color: Colors.white,
                                     ),
                                 elevation: 3.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -217,9 +216,9 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 20.0),
                               child: Text(
                                 'OR',
@@ -228,27 +227,27 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Builder(
                               builder: (context) => FFButtonWidget(
                                 onPressed: () async {
                                   await Share.share(
-                                    'Download the Red Button App now and join the Red Button community! (Link coming soon)',
+                                    'Download the Red Button App now and join the Red Button community! Download link: redbutton.redbutton.com',
                                     sharePositionOrigin:
                                         getWidgetBoundingBox(context),
                                   );
                                 },
                                 text: 'Share Now',
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.share_sharp,
                                   size: 20.0,
                                 ),
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 45.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -258,7 +257,7 @@ class _InviteFriendsWidgetState extends State<InviteFriendsWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

@@ -1,17 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'no_contacts_yet_model.dart';
 export 'no_contacts_yet_model.dart';
 
 class NoContactsYetWidget extends StatefulWidget {
-  const NoContactsYetWidget({Key? key}) : super(key: key);
+  const NoContactsYetWidget({super.key});
 
   @override
-  _NoContactsYetWidgetState createState() => _NoContactsYetWidgetState();
+  State<NoContactsYetWidget> createState() => _NoContactsYetWidgetState();
 }
 
 class _NoContactsYetWidgetState extends State<NoContactsYetWidget> {
@@ -51,7 +49,7 @@ class _NoContactsYetWidgetState extends State<NoContactsYetWidget> {
         context.pushNamed(
           'contactList',
           extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
+            kTransitionInfoKey: const TransitionInfo(
               hasTransition: true,
               transitionType: PageTransitionType.rightToLeft,
             ),

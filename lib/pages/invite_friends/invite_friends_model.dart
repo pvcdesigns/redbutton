@@ -1,13 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'invite_friends_widget.dart' show InviteFriendsWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class InviteFriendsModel extends FlutterFlowModel<InviteFriendsWidget> {
   ///  State fields for stateful widgets in this page.
@@ -31,10 +24,12 @@ class InviteFriendsModel extends FlutterFlowModel<InviteFriendsWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     textControllerValidator = _textControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();

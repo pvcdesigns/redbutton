@@ -28,8 +28,9 @@ class ContactListStruct extends FFFirebaseStruct {
         contactID: getDataList(data['contactID']),
       );
 
-  static ContactListStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? ContactListStruct.fromMap(data) : null;
+  static ContactListStruct? maybeFromMap(dynamic data) => data is Map
+      ? ContactListStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'contactID': _contactID,
@@ -60,7 +61,7 @@ class ContactListStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
-        firestoreUtilData: FirestoreUtilData(
+        firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
         ),

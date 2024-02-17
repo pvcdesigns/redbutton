@@ -4,16 +4,15 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'settings_model.dart';
 export 'settings_model.dart';
 
 class SettingsWidget extends StatefulWidget {
-  const SettingsWidget({Key? key}) : super(key: key);
+  const SettingsWidget({super.key});
 
   @override
-  _SettingsWidgetState createState() => _SettingsWidgetState();
+  State<SettingsWidget> createState() => _SettingsWidgetState();
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
@@ -65,7 +64,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 fontWeight: FontWeight.normal,
               ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -74,7 +73,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -89,9 +88,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                   child: Text(
-                    ' - ${currentUserEmail}',
+                    ' - $currentUserEmail',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -102,7 +101,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -111,12 +110,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   BoxShadow(
                     blurRadius: 0.0,
                     color: FlutterFlowTheme.of(context).alternate,
-                    offset: Offset(0.0, 1.0),
+                    offset: const Offset(0.0, 1.0),
                   )
                 ],
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
                 child: Text(
                   'My Account Information',
                   style: FlutterFlowTheme.of(context).labelMedium,
@@ -125,7 +124,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 60.0,
@@ -135,13 +134,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   BoxShadow(
                     blurRadius: 0.0,
                     color: FlutterFlowTheme.of(context).alternate,
-                    offset: Offset(0.0, 1.0),
+                    offset: const Offset(0.0, 1.0),
                   )
                 ],
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -151,7 +150,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     context.pushNamed(
                       'editProfile',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.rightToLeft,
                         ),
@@ -171,7 +170,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
+                              alignment: const AlignmentDirectional(1.0, 0.0),
                               child: Icon(
                                 Icons.arrow_forward_ios,
                                 color:
@@ -192,7 +191,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 60.0,
@@ -202,14 +201,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       BoxShadow(
                         blurRadius: 0.0,
                         color: FlutterFlowTheme.of(context).alternate,
-                        offset: Offset(0.0, 1.0),
+                        offset: const Offset(0.0, 1.0),
                       )
                     ],
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -229,7 +228,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           }.withoutNulls,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.rightToLeft,
                             ),
@@ -255,7 +254,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
@@ -278,7 +277,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 60.0,
@@ -288,14 +287,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       BoxShadow(
                         blurRadius: 0.0,
                         color: FlutterFlowTheme.of(context).alternate,
-                        offset: Offset(0.0, 1.0),
+                        offset: const Offset(0.0, 1.0),
                       )
                     ],
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -305,7 +304,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         context.pushNamed(
                           'contactList',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.rightToLeft,
                             ),
@@ -331,7 +330,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
@@ -354,7 +353,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 60.0,
@@ -364,14 +363,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       BoxShadow(
                         blurRadius: 0.0,
                         color: FlutterFlowTheme.of(context).alternate,
-                        offset: Offset(0.0, 1.0),
+                        offset: const Offset(0.0, 1.0),
                       )
                     ],
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -381,7 +380,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         context.pushNamed(
                           'inviteFriends',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.rightToLeft,
                             ),
@@ -407,7 +406,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
@@ -427,7 +426,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -436,12 +435,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   BoxShadow(
                     blurRadius: 0.0,
                     color: FlutterFlowTheme.of(context).alternate,
-                    offset: Offset(0.0, 1.0),
+                    offset: const Offset(0.0, 1.0),
                   )
                 ],
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
                 child: Text(
                   'Support',
                   style: FlutterFlowTheme.of(context).labelMedium,
@@ -453,7 +452,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 60.0,
@@ -463,14 +462,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       BoxShadow(
                         blurRadius: 0.0,
                         color: FlutterFlowTheme.of(context).alternate,
-                        offset: Offset(0.0, 1.0),
+                        offset: const Offset(0.0, 1.0),
                       )
                     ],
                     shape: BoxShape.rectangle,
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -480,7 +479,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         context.pushNamed(
                           'tutorial',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.rightToLeft,
                             ),
@@ -506,7 +505,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
@@ -526,7 +525,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 60.0,
@@ -536,13 +535,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   BoxShadow(
                     blurRadius: 0.0,
                     color: FlutterFlowTheme.of(context).alternate,
-                    offset: Offset(0.0, 1.0),
+                    offset: const Offset(0.0, 1.0),
                   )
                 ],
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -552,7 +551,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     context.pushNamed(
                       'reportBug',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.rightToLeft,
                         ),
@@ -578,7 +577,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
+                              alignment: const AlignmentDirectional(1.0, 0.0),
                               child: Icon(
                                 Icons.arrow_forward_ios,
                                 color:
@@ -596,7 +595,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Container(
               width: double.infinity,
               height: 50.0,
@@ -609,7 +608,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -657,7 +656,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 size: 16.0,
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Light ',
@@ -722,7 +721,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 size: 16.0,
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Dark',
@@ -750,7 +749,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
                 GoRouter.of(context).prepareAuthEvent();
@@ -763,8 +762,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               options: FFButtonOptions(
                 width: 350.0,
                 height: 50.0,
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Readex Pro',
@@ -772,7 +771,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       fontWeight: FontWeight.w500,
                     ),
                 elevation: 0.0,
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   width: 0.0,
                 ),
                 borderRadius: BorderRadius.circular(8.0),

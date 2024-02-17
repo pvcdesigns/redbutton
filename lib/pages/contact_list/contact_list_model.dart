@@ -1,18 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/contact_list_row_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'contact_list_widget.dart' show ContactListWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ContactListModel extends FlutterFlowModel<ContactListWidget> {
   ///  State fields for stateful widgets in this page.
@@ -47,11 +37,13 @@ class ContactListModel extends FlutterFlowModel<ContactListWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     searchFieldControllerValidator = _searchFieldControllerValidator;
     contactListRowModel = createModel(context, () => ContactListRowModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     searchFieldFocusNode?.dispose();

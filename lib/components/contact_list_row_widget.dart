@@ -4,19 +4,16 @@ import '/components/no_contacts_yet_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'contact_list_row_model.dart';
 export 'contact_list_row_model.dart';
 
 class ContactListRowWidget extends StatefulWidget {
-  const ContactListRowWidget({Key? key}) : super(key: key);
+  const ContactListRowWidget({super.key});
 
   @override
-  _ContactListRowWidgetState createState() => _ContactListRowWidgetState();
+  State<ContactListRowWidget> createState() => _ContactListRowWidgetState();
 }
 
 class _ContactListRowWidgetState extends State<ContactListRowWidget> {
@@ -49,16 +46,16 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
 
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: AlignmentDirectional(-1.0, 0.0),
+            alignment: const AlignmentDirectional(-1.0, 0.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
               child: Text(
-                'Please add contacts to your list using the search bar above',
+                'Please add contacts to your list using the search bar above. (Only app users are available)',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -92,7 +89,7 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
               List<ContactListRecord> contactListColumnContactListRecordList =
                   snapshot.data!;
               if (contactListColumnContactListRecordList.isEmpty) {
-                return NoContactsYetWidget();
+                return const NoContactsYetWidget();
               }
               return Column(
                 mainAxisSize: MainAxisSize.max,
@@ -108,16 +105,16 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
                     children: [
                       Container(
                         width: 300.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 15.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 5.0),
                                 child: Text(
                                   '${contactListColumnContactListRecord.displayName} - ${valueOrDefault<String>(
@@ -149,7 +146,7 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
                       ),
                       Container(
                         width: 40.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: FlutterFlowIconButton(
                           borderRadius: 20.0,
                           borderWidth: 0.0,
@@ -164,19 +161,19 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: Text('Please confirm'),
+                                      title: const Text('Please confirm'),
                                       content: Text(
                                           'You are about to remove ${contactListColumnContactListRecord.displayName} from your emergency list. Are you sure?'),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, false),
-                                          child: Text('Cancel'),
+                                          child: const Text('Cancel'),
                                         ),
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: Text('Confirm'),
+                                          child: const Text('Confirm'),
                                         ),
                                       ],
                                     );
@@ -196,6 +193,7 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
                               });
                               await contactListColumnContactListRecord.reference
                                   .delete();
+                              _model.updatePage(() {});
                               ScaffoldMessenger.of(context).clearSnackBars();
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -210,7 +208,7 @@ class _ContactListRowWidgetState extends State<ContactListRowWidget> {
                                           fontSize: 14.0,
                                         ),
                                   ),
-                                  duration: Duration(milliseconds: 4000),
+                                  duration: const Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),

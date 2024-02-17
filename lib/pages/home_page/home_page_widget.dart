@@ -19,13 +19,11 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:provider/provider.dart';
@@ -34,12 +32,12 @@ export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
-    Key? key,
+    super.key,
     this.notifications,
     this.selectedContactList,
     this.activityList,
     this.routeList,
-  }) : super(key: key);
+  });
 
   final NotificationsRecord? notifications;
   final ContactListRecord? selectedContactList;
@@ -47,7 +45,7 @@ class HomePageWidget extends StatefulWidget {
   final RouteListRecord? routeList;
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget>
@@ -65,8 +63,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 200.ms,
-          begin: Offset(0.0, 50.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 50.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -85,8 +83,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
           curve: Curves.bounceOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(1.0, 1.0),
+          begin: const Offset(0.0, 0.0),
+          end: const Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -99,7 +97,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
           delay: 0.ms,
           duration: 800.ms,
           hz: 10,
-          offset: Offset(5.0, 0.0),
+          offset: const Offset(5.0, 0.0),
           rotation: 0.087,
         ),
       ],
@@ -111,8 +109,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 300.ms,
-          begin: Offset(-64.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-64.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -130,8 +128,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 300.ms,
-          begin: Offset(64.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(64.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -201,7 +199,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.loopCounter = 0;
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 1000),
         callback: (timer) async {
           FFAppState().currentTimer = _model.timerMilliseconds;
         },
@@ -209,7 +207,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
       );
     });
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -267,24 +265,24 @@ class _HomePageWidgetState extends State<HomePageWidget>
           key: scaffoldKey,
           resizeToAvoidBottomInset: false,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: Container(
+          body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Stack(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               children: [
                 Builder(builder: (context) {
-                  final _googleMapMarker = currentUserLocationValue;
+                  final googleMapMarker = currentUserLocationValue;
                   return FlutterFlowGoogleMap(
                     controller: _model.googleMapsController,
                     onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
                     initialLocation: _model.googleMapsCenter ??=
                         currentUserLocationValue!,
                     markers: [
-                      if (_googleMapMarker != null)
+                      if (googleMapMarker != null)
                         FlutterFlowMarker(
-                          _googleMapMarker.serialize(),
-                          _googleMapMarker,
+                          googleMapMarker.serialize(),
+                          googleMapMarker,
                         ),
                     ],
                     markerColor: GoogleMarkerColor.red,
@@ -302,7 +300,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   );
                 }),
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: PointerInterceptor(
                     intercepting: isWeb,
                     child: ClipRect(
@@ -312,12 +310,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           sigmaY: 0.0,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 50.0),
                           child: Container(
                             width: double.infinity,
                             height: 98.0,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0x66111111),
                             ),
                           ),
@@ -334,9 +332,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     children: [
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 50.0, 0.0, 0.0),
                             child: wrapWithModel(
                               model: _model.notificationsModel,
@@ -351,13 +349,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       if (FFAppState().startNow)
                         AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeOut,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x33000000),
@@ -377,14 +375,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       true,
                                     ))
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             currentUserLocationValue =
                                                 await getCurrentUserLocation(
                                                     defaultLocation:
-                                                        LatLng(0.0, 0.0));
+                                                        const LatLng(0.0, 0.0));
                                             _model.soundPlayer1 ??=
                                                 AudioPlayer();
                                             if (_model.soundPlayer1!.playing) {
@@ -468,89 +466,105 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     routeListRecordReference);
                                             FFAppState().newRoute =
                                                 _model.newRoute?.reference;
-
-                                            var notificationsRecordReference1 =
-                                                NotificationsRecord.collection
-                                                    .doc();
-                                            await notificationsRecordReference1
-                                                .set({
-                                              ...createNotificationsRecordData(
-                                                timestamp: getCurrentTimestamp,
-                                                userPhoto: currentUserPhoto,
-                                                selectedActivityName: _model
-                                                    .newRoute?.activityName,
-                                                startLocation: _model
-                                                    .newRoute?.locationStart,
-                                                userID: currentUserReference,
-                                                userName:
-                                                    currentUserDisplayName,
-                                                selectedActivityTime: (_model
-                                                            .timerMilliseconds =
-                                                        (_model.timerMilliseconds /
-                                                                60000)
-                                                            .ceil())
-                                                    .toString(),
-                                                isRead: false,
-                                                startLocationName:
-                                                    GeoCodeReverseCall
-                                                        .locationName(
-                                                  (_model.locationName
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                ).toString(),
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'contactList':
+                                            FFAppState()
+                                                .finalActivityTime = (_model
+                                                        .timerMilliseconds =
+                                                    (_model.timerMilliseconds /
+                                                            60000)
+                                                        .ceil())
+                                                .toString();
+                                            while (_model.contactCounter <
+                                                (currentUserDocument
+                                                            ?.contactList
+                                                            .toList() ??
+                                                        [])
+                                                    .length) {
+                                              var notificationsRecordReference1 =
+                                                  NotificationsRecord.collection
+                                                      .doc();
+                                              await notificationsRecordReference1
+                                                  .set({
+                                                ...createNotificationsRecordData(
+                                                  timestamp:
+                                                      getCurrentTimestamp,
+                                                  userPhoto: currentUserPhoto,
+                                                  selectedActivityName: _model
+                                                      .newRoute?.activityName,
+                                                  startLocation: _model
+                                                      .newRoute?.locationStart,
+                                                  userID: currentUserReference,
+                                                  userName:
+                                                      currentUserDisplayName,
+                                                  selectedActivityTime:
+                                                      FFAppState()
+                                                          .finalActivityTime,
+                                                  isRead: false,
+                                                  startLocationName:
+                                                      GeoCodeReverseCall
+                                                          .locationName(
+                                                    (_model.locationName
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ).toString(),
+                                                ),
+                                                ...mapToFirestore(
+                                                  {
+                                                    'contactList': [
                                                       (currentUserDocument
                                                                   ?.contactList
-                                                                  ?.toList() ??
-                                                              [])
-                                                          .map((e) => e.id)
-                                                          .toList(),
-                                                },
-                                              ),
+                                                                  .toList() ??
+                                                              [])[_model.contactCounter]
+                                                          .id
+                                                    ],
+                                                  },
+                                                ),
+                                              });
+                                              _model.startNotification =
+                                                  NotificationsRecord
+                                                      .getDocumentFromData({
+                                                ...createNotificationsRecordData(
+                                                  timestamp:
+                                                      getCurrentTimestamp,
+                                                  userPhoto: currentUserPhoto,
+                                                  selectedActivityName: _model
+                                                      .newRoute?.activityName,
+                                                  startLocation: _model
+                                                      .newRoute?.locationStart,
+                                                  userID: currentUserReference,
+                                                  userName:
+                                                      currentUserDisplayName,
+                                                  selectedActivityTime:
+                                                      FFAppState()
+                                                          .finalActivityTime,
+                                                  isRead: false,
+                                                  startLocationName:
+                                                      GeoCodeReverseCall
+                                                          .locationName(
+                                                    (_model.locationName
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ).toString(),
+                                                ),
+                                                ...mapToFirestore(
+                                                  {
+                                                    'contactList': [
+                                                      (currentUserDocument
+                                                                  ?.contactList
+                                                                  .toList() ??
+                                                              [])[_model.contactCounter]
+                                                          .id
+                                                    ],
+                                                  },
+                                                ),
+                                              }, notificationsRecordReference1);
+                                              setState(() {
+                                                _model.contactCounter =
+                                                    _model.contactCounter + 1;
+                                              });
+                                            }
+                                            setState(() {
+                                              _model.contactCounter = 0;
                                             });
-                                            _model.startNotification =
-                                                NotificationsRecord
-                                                    .getDocumentFromData({
-                                              ...createNotificationsRecordData(
-                                                timestamp: getCurrentTimestamp,
-                                                userPhoto: currentUserPhoto,
-                                                selectedActivityName: _model
-                                                    .newRoute?.activityName,
-                                                startLocation: _model
-                                                    .newRoute?.locationStart,
-                                                userID: currentUserReference,
-                                                userName:
-                                                    currentUserDisplayName,
-                                                selectedActivityTime: (_model
-                                                            .timerMilliseconds =
-                                                        (_model.timerMilliseconds /
-                                                                60000)
-                                                            .ceil())
-                                                    .toString(),
-                                                isRead: false,
-                                                startLocationName:
-                                                    GeoCodeReverseCall
-                                                        .locationName(
-                                                  (_model.locationName
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                ).toString(),
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'contactList':
-                                                      (currentUserDocument
-                                                                  ?.contactList
-                                                                  ?.toList() ??
-                                                              [])
-                                                          .map((e) => e.id)
-                                                          .toList(),
-                                                },
-                                              ),
-                                            }, notificationsRecordReference1);
 
                                             var notificationsRecordReference2 =
                                                 NotificationsRecord.collection
@@ -561,12 +575,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               selectedActivityName:
                                                   _model.newRoute?.activityName,
                                               userID: currentUserReference,
-                                              selectedActivityTime: (_model
-                                                          .timerMilliseconds =
-                                                      (_model.timerMilliseconds /
-                                                              60000)
-                                                          .ceil())
-                                                  .toString(),
+                                              selectedActivityTime: FFAppState()
+                                                  .finalActivityTime,
                                             ));
                                             _model.notEndedNotification =
                                                 NotificationsRecord.getDocumentFromData(
@@ -577,11 +587,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       userID:
                                                           currentUserReference,
                                                       selectedActivityTime:
-                                                          (_model.timerMilliseconds =
-                                                                  (_model.timerMilliseconds /
-                                                                          60000)
-                                                                      .ceil())
-                                                              .toString(),
+                                                          FFAppState()
+                                                              .finalActivityTime,
                                                     ),
                                                     notificationsRecordReference2);
                                             await actions.toggleWakelock();
@@ -589,11 +596,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               notificationTitle:
                                                   'Activity started',
                                               notificationText:
-                                                  '${currentUserDisplayName} has just started ${_model.startNotification?.selectedActivityName} for ${_model.startNotification?.selectedActivityTime}mins',
+                                                  '$currentUserDisplayName has just started ${_model.newRoute?.activityName} for ${FFAppState().finalActivityTime}mins',
                                               notificationSound: 'default',
                                               userRefs: (currentUserDocument
                                                           ?.contactList
-                                                          ?.toList() ??
+                                                          .toList() ??
                                                       [])
                                                   .toList(),
                                               initialPageName: 'HomePage',
@@ -603,7 +610,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             setState(() {});
                                           },
                                           text: 'Start Activity',
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.play_arrow_rounded,
                                             size: 35.0,
                                           ),
@@ -611,10 +618,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             width: 180.0,
                                             height: 50.0,
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 8.0, 0.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -626,7 +633,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       color: Colors.white,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -643,7 +650,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -654,7 +661,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           currentUserLocationValue =
                                               await getCurrentUserLocation(
                                                   defaultLocation:
-                                                      LatLng(0.0, 0.0));
+                                                      const LatLng(0.0, 0.0));
                                           _model.soundPlayer2 ??= AudioPlayer();
                                           if (_model.soundPlayer2!.playing) {
                                             await _model.soundPlayer2!.stop();
@@ -683,69 +690,91 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       .toGoogleMaps()),
                                             ),
                                           );
-
-                                          var notificationsRecordReference =
-                                              NotificationsRecord.collection
-                                                  .doc();
-                                          await notificationsRecordReference
-                                              .set({
-                                            ...createNotificationsRecordData(
-                                              timestamp: getCurrentTimestamp,
-                                              userPhoto: currentUserPhoto,
-                                              selectedActivityName:
-                                                  FFAppState().selectedActivity,
-                                              userID: currentUserReference,
-                                              userName: currentUserDisplayName,
-                                              endLocation:
-                                                  currentUserLocationValue,
-                                              isRead: false,
-                                              contactNumber: currentPhoneNumber,
-                                              isEmergency: true,
-                                              needHelp: true,
-                                              response: true,
-                                            ),
-                                            ...mapToFirestore(
-                                              {
-                                                'contactList':
+                                          while (_model.contactCounter <
+                                              (currentUserDocument?.contactList
+                                                          .toList() ??
+                                                      [])
+                                                  .length) {
+                                            var notificationsRecordReference =
+                                                NotificationsRecord.collection
+                                                    .doc();
+                                            await notificationsRecordReference
+                                                .set({
+                                              ...createNotificationsRecordData(
+                                                timestamp: getCurrentTimestamp,
+                                                userPhoto: currentUserPhoto,
+                                                selectedActivityName:
+                                                    FFAppState()
+                                                        .selectedActivity,
+                                                userID: currentUserReference,
+                                                userName:
+                                                    currentUserDisplayName,
+                                                endLocation:
+                                                    currentUserLocationValue,
+                                                isRead: false,
+                                                contactNumber:
+                                                    currentPhoneNumber,
+                                                isEmergency: true,
+                                                needHelp: true,
+                                                response: true,
+                                              ),
+                                              ...mapToFirestore(
+                                                {
+                                                  'contactList': [
                                                     (currentUserDocument
-                                                                ?.contactList
-                                                                ?.toList() ??
-                                                            [])
-                                                        .map((e) => e.id)
-                                                        .toList(),
-                                              },
-                                            ),
+                                                                    ?.contactList
+                                                                    .toList() ??
+                                                                [])[
+                                                            _model
+                                                                .contactCounter]
+                                                        .id
+                                                  ],
+                                                },
+                                              ),
+                                            });
+                                            _model.sosNotification =
+                                                NotificationsRecord
+                                                    .getDocumentFromData({
+                                              ...createNotificationsRecordData(
+                                                timestamp: getCurrentTimestamp,
+                                                userPhoto: currentUserPhoto,
+                                                selectedActivityName:
+                                                    FFAppState()
+                                                        .selectedActivity,
+                                                userID: currentUserReference,
+                                                userName:
+                                                    currentUserDisplayName,
+                                                endLocation:
+                                                    currentUserLocationValue,
+                                                isRead: false,
+                                                contactNumber:
+                                                    currentPhoneNumber,
+                                                isEmergency: true,
+                                                needHelp: true,
+                                                response: true,
+                                              ),
+                                              ...mapToFirestore(
+                                                {
+                                                  'contactList': [
+                                                    (currentUserDocument
+                                                                    ?.contactList
+                                                                    .toList() ??
+                                                                [])[
+                                                            _model
+                                                                .contactCounter]
+                                                        .id
+                                                  ],
+                                                },
+                                              ),
+                                            }, notificationsRecordReference);
+                                            setState(() {
+                                              _model.contactCounter =
+                                                  _model.contactCounter + 1;
+                                            });
+                                          }
+                                          setState(() {
+                                            _model.contactCounter = 0;
                                           });
-                                          _model.sosNotification =
-                                              NotificationsRecord
-                                                  .getDocumentFromData({
-                                            ...createNotificationsRecordData(
-                                              timestamp: getCurrentTimestamp,
-                                              userPhoto: currentUserPhoto,
-                                              selectedActivityName:
-                                                  FFAppState().selectedActivity,
-                                              userID: currentUserReference,
-                                              userName: currentUserDisplayName,
-                                              endLocation:
-                                                  currentUserLocationValue,
-                                              isRead: false,
-                                              contactNumber: currentPhoneNumber,
-                                              isEmergency: true,
-                                              needHelp: true,
-                                              response: true,
-                                            ),
-                                            ...mapToFirestore(
-                                              {
-                                                'contactList':
-                                                    (currentUserDocument
-                                                                ?.contactList
-                                                                ?.toList() ??
-                                                            [])
-                                                        .map((e) => e.id)
-                                                        .toList(),
-                                              },
-                                            ),
-                                          }, notificationsRecordReference);
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -764,7 +793,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         ),
                                               ),
                                               duration:
-                                                  Duration(milliseconds: 4000),
+                                                  const Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -773,11 +802,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           triggerPushNotification(
                                             notificationTitle: 'SOS!',
                                             notificationText:
-                                                '${currentUserDisplayName} has just sent an SOS during ${_model.startNotification?.selectedActivityName}! Please contact them now: ${currentPhoneNumber}',
+                                                '$currentUserDisplayName has just sent an SOS during ${_model.startNotification?.selectedActivityName}! Please contact them now: $currentPhoneNumber',
                                             notificationSound: 'default',
                                             userRefs: (currentUserDocument
                                                         ?.contactList
-                                                        ?.toList() ??
+                                                        .toList() ??
                                                     [])
                                                 .toList(),
                                             initialPageName: 'HomePage',
@@ -807,7 +836,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 size: 40.0,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
@@ -840,7 +869,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -852,7 +881,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               currentUserLocationValue =
                                                   await getCurrentUserLocation(
                                                       defaultLocation:
-                                                          LatLng(0.0, 0.0));
+                                                          const LatLng(0.0, 0.0));
                                               _model.soundPlayer3 ??=
                                                   AudioPlayer();
                                               if (_model
@@ -946,87 +975,103 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   currentUserLocationValue;
                                               FFAppState()
                                                   .addFiveMinutesInMilliseconds = 0;
-
-                                              var notificationsRecordReference =
-                                                  NotificationsRecord.collection
-                                                      .doc();
-                                              await notificationsRecordReference
-                                                  .set({
-                                                ...createNotificationsRecordData(
-                                                  timestamp:
-                                                      getCurrentTimestamp,
-                                                  userPhoto: currentUserPhoto,
-                                                  selectedActivityName: _model
-                                                      .newRoute?.activityName,
-                                                  userID: currentUserReference,
-                                                  userName:
-                                                      currentUserDisplayName,
-                                                  selectedActivityTime:
-                                                      FFAppState()
-                                                          .selectedActivityTime
-                                                          .toString(),
-                                                  endLocation:
-                                                      currentUserLocationValue,
-                                                  isRead: false,
-                                                  endLocationName:
-                                                      GeoCodeReverseCall
-                                                          .locationName(
-                                                    (_model.endlocationName
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                ),
-                                                ...mapToFirestore(
-                                                  {
-                                                    'contactList':
+                                              while (_model.contactCounter <
+                                                  (currentUserDocument
+                                                              ?.contactList
+                                                              .toList() ??
+                                                          [])
+                                                      .length) {
+                                                var notificationsRecordReference =
+                                                    NotificationsRecord
+                                                        .collection
+                                                        .doc();
+                                                await notificationsRecordReference
+                                                    .set({
+                                                  ...createNotificationsRecordData(
+                                                    timestamp:
+                                                        getCurrentTimestamp,
+                                                    userPhoto: currentUserPhoto,
+                                                    selectedActivityName: _model
+                                                        .newRoute?.activityName,
+                                                    userID:
+                                                        currentUserReference,
+                                                    userName:
+                                                        currentUserDisplayName,
+                                                    selectedActivityTime:
+                                                        FFAppState()
+                                                            .selectedActivityTime
+                                                            .toString(),
+                                                    endLocation:
+                                                        currentUserLocationValue,
+                                                    isRead: false,
+                                                    endLocationName:
+                                                        GeoCodeReverseCall
+                                                            .locationName(
+                                                      (_model.endlocationName
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'contactList': [
                                                         (currentUserDocument
                                                                     ?.contactList
-                                                                    ?.toList() ??
-                                                                [])
-                                                            .map((e) => e.id)
-                                                            .toList(),
-                                                  },
-                                                ),
+                                                                    .toList() ??
+                                                                [])[_model.contactCounter]
+                                                            .id
+                                                      ],
+                                                    },
+                                                  ),
+                                                });
+                                                _model.endNotification =
+                                                    NotificationsRecord
+                                                        .getDocumentFromData({
+                                                  ...createNotificationsRecordData(
+                                                    timestamp:
+                                                        getCurrentTimestamp,
+                                                    userPhoto: currentUserPhoto,
+                                                    selectedActivityName: _model
+                                                        .newRoute?.activityName,
+                                                    userID:
+                                                        currentUserReference,
+                                                    userName:
+                                                        currentUserDisplayName,
+                                                    selectedActivityTime:
+                                                        FFAppState()
+                                                            .selectedActivityTime
+                                                            .toString(),
+                                                    endLocation:
+                                                        currentUserLocationValue,
+                                                    isRead: false,
+                                                    endLocationName:
+                                                        GeoCodeReverseCall
+                                                            .locationName(
+                                                      (_model.endlocationName
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'contactList': [
+                                                        (currentUserDocument
+                                                                    ?.contactList
+                                                                    .toList() ??
+                                                                [])[_model.contactCounter]
+                                                            .id
+                                                      ],
+                                                    },
+                                                  ),
+                                                }, notificationsRecordReference);
+                                                setState(() {
+                                                  _model.contactCounter =
+                                                      _model.contactCounter + 1;
+                                                });
+                                              }
+                                              setState(() {
+                                                _model.contactCounter = 0;
                                               });
-                                              _model.endNotification =
-                                                  NotificationsRecord
-                                                      .getDocumentFromData({
-                                                ...createNotificationsRecordData(
-                                                  timestamp:
-                                                      getCurrentTimestamp,
-                                                  userPhoto: currentUserPhoto,
-                                                  selectedActivityName: _model
-                                                      .newRoute?.activityName,
-                                                  userID: currentUserReference,
-                                                  userName:
-                                                      currentUserDisplayName,
-                                                  selectedActivityTime:
-                                                      FFAppState()
-                                                          .selectedActivityTime
-                                                          .toString(),
-                                                  endLocation:
-                                                      currentUserLocationValue,
-                                                  isRead: false,
-                                                  endLocationName:
-                                                      GeoCodeReverseCall
-                                                          .locationName(
-                                                    (_model.endlocationName
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                ),
-                                                ...mapToFirestore(
-                                                  {
-                                                    'contactList':
-                                                        (currentUserDocument
-                                                                    ?.contactList
-                                                                    ?.toList() ??
-                                                                [])
-                                                            .map((e) => e.id)
-                                                            .toList(),
-                                                  },
-                                                ),
-                                              }, notificationsRecordReference);
                                               await _model.notEndedNotification!
                                                   .reference
                                                   .delete();
@@ -1054,7 +1099,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontSize: 14.0,
                                                         ),
                                                   ),
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 4000),
                                                   backgroundColor:
                                                       FlutterFlowTheme.of(
@@ -1066,11 +1111,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 notificationTitle:
                                                     'Activity stopped',
                                                 notificationText:
-                                                    '${currentUserDisplayName} has just safely finished with ${_model.startNotification?.selectedActivityName}',
+                                                    '$currentUserDisplayName has just safely finished with ${_model.startNotification?.selectedActivityName}',
                                                 notificationSound: 'default',
                                                 userRefs: (currentUserDocument
                                                             ?.contactList
-                                                            ?.toList() ??
+                                                            .toList() ??
                                                         [])
                                                     .toList(),
                                                 initialPageName: 'HomePage',
@@ -1080,17 +1125,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               setState(() {});
                                             },
                                             text: 'Stop Activity',
-                                            icon: FaIcon(
+                                            icon: const FaIcon(
                                               FontAwesomeIcons.stop,
                                               size: 24.0,
                                             ),
                                             options: FFButtonOptions(
                                               width: 180.0,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1104,11 +1149,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         color: Colors.white,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(8.0),
                                                 bottomRight:
@@ -1121,7 +1166,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               'buttonOnPageLoadAnimation2']!),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     1.0, 0.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
@@ -1165,64 +1210,82 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         FFAppState()
                                                                 .addFiveMinutesInMilliseconds +
                                                             (5 * 60 * 1000);
-
-                                                var notificationsRecordReference =
-                                                    NotificationsRecord
-                                                        .collection
-                                                        .doc();
-                                                await notificationsRecordReference
-                                                    .set({
-                                                  ...createNotificationsRecordData(
-                                                    timestamp:
-                                                        getCurrentTimestamp,
-                                                    userPhoto: currentUserPhoto,
-                                                    selectedActivityName: _model
-                                                        .newRoute?.activityName,
-                                                    userID:
-                                                        currentUserReference,
-                                                    userName:
-                                                        currentUserDisplayName,
-                                                    isRead: false,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'contactList':
+                                                while (_model.contactCounter <
+                                                    (currentUserDocument
+                                                                ?.contactList
+                                                                .toList() ??
+                                                            [])
+                                                        .length) {
+                                                  var notificationsRecordReference =
+                                                      NotificationsRecord
+                                                          .collection
+                                                          .doc();
+                                                  await notificationsRecordReference
+                                                      .set({
+                                                    ...createNotificationsRecordData(
+                                                      timestamp:
+                                                          getCurrentTimestamp,
+                                                      userPhoto:
+                                                          currentUserPhoto,
+                                                      selectedActivityName:
+                                                          _model.newRoute
+                                                              ?.activityName,
+                                                      userID:
+                                                          currentUserReference,
+                                                      userName:
+                                                          currentUserDisplayName,
+                                                      isRead: false,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'contactList': [
                                                           (currentUserDocument
                                                                       ?.contactList
-                                                                      ?.toList() ??
-                                                                  [])
-                                                              .map((e) => e.id)
-                                                              .toList(),
-                                                    },
-                                                  ),
+                                                                      .toList() ??
+                                                                  [])[_model.contactCounter]
+                                                              .id
+                                                        ],
+                                                      },
+                                                    ),
+                                                  });
+                                                  _model.add5Notification =
+                                                      NotificationsRecord
+                                                          .getDocumentFromData({
+                                                    ...createNotificationsRecordData(
+                                                      timestamp:
+                                                          getCurrentTimestamp,
+                                                      userPhoto:
+                                                          currentUserPhoto,
+                                                      selectedActivityName:
+                                                          _model.newRoute
+                                                              ?.activityName,
+                                                      userID:
+                                                          currentUserReference,
+                                                      userName:
+                                                          currentUserDisplayName,
+                                                      isRead: false,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'contactList': [
+                                                          (currentUserDocument
+                                                                      ?.contactList
+                                                                      .toList() ??
+                                                                  [])[_model.contactCounter]
+                                                              .id
+                                                        ],
+                                                      },
+                                                    ),
+                                                  }, notificationsRecordReference);
+                                                  setState(() {
+                                                    _model.contactCounter =
+                                                        _model.contactCounter +
+                                                            1;
+                                                  });
+                                                }
+                                                setState(() {
+                                                  _model.contactCounter = 0;
                                                 });
-                                                _model.add5Notification =
-                                                    NotificationsRecord
-                                                        .getDocumentFromData({
-                                                  ...createNotificationsRecordData(
-                                                    timestamp:
-                                                        getCurrentTimestamp,
-                                                    userPhoto: currentUserPhoto,
-                                                    selectedActivityName: _model
-                                                        .newRoute?.activityName,
-                                                    userID:
-                                                        currentUserReference,
-                                                    userName:
-                                                        currentUserDisplayName,
-                                                    isRead: false,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'contactList':
-                                                          (currentUserDocument
-                                                                      ?.contactList
-                                                                      ?.toList() ??
-                                                                  [])
-                                                              .map((e) => e.id)
-                                                              .toList(),
-                                                    },
-                                                  ),
-                                                }, notificationsRecordReference);
                                                 ScaffoldMessenger.of(context)
                                                     .clearSnackBars();
                                                 ScaffoldMessenger.of(context)
@@ -1243,7 +1306,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 fontSize: 14.0,
                                                               ),
                                                     ),
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 4000),
                                                     backgroundColor:
                                                         FlutterFlowTheme.of(
@@ -1255,11 +1318,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   notificationTitle:
                                                       '5 mins added',
                                                   notificationText:
-                                                      '${currentUserDisplayName} has just added 5mins to ${_model.startNotification?.selectedActivityName}',
+                                                      '$currentUserDisplayName has just added 5mins to ${_model.startNotification?.selectedActivityName}',
                                                   notificationSound: 'default',
                                                   userRefs: (currentUserDocument
                                                               ?.contactList
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [])
                                                       .toList(),
                                                   initialPageName: 'HomePage',
@@ -1269,18 +1332,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 setState(() {});
                                               },
                                               text: '5min',
-                                              icon: Icon(
+                                              icon: const Icon(
                                                 Icons.add,
                                                 size: 20.0,
                                               ),
                                               options: FFButtonOptions(
                                                 width: 90.0,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsets.all(0.0),
+                                                    const EdgeInsets.all(0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondary,
@@ -1294,11 +1357,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontSize: 17.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 0.0,
                                                 ),
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -1317,7 +1380,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ],
                                 ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 350.0,
@@ -1426,7 +1489,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                        margin: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isSearchable: false,
@@ -1437,7 +1500,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 20.0),
                                 child: FlutterFlowTimer(
                                   initialTime: _model.timerMilliseconds,
@@ -1446,7 +1509,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           milliSecond: false),
                                   controller: _model.timerController,
                                   updateStateInterval:
-                                      Duration(milliseconds: 1000),
+                                      const Duration(milliseconds: 1000),
                                   onChanged:
                                       (value, displayTime, shouldUpdate) {
                                     _model.timerMilliseconds = value;
@@ -1456,7 +1519,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   onEnded: () async {
                                     currentUserLocationValue =
                                         await getCurrentUserLocation(
-                                            defaultLocation: LatLng(0.0, 0.0));
+                                            defaultLocation: const LatLng(0.0, 0.0));
                                     final firestoreBatch =
                                         FirebaseFirestore.instance.batch();
                                     try {
@@ -1544,7 +1607,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 'contactList':
                                                     (currentUserDocument
                                                                 ?.contactList
-                                                                ?.toList() ??
+                                                                .toList() ??
                                                             [])
                                                         .map((e) => e.id)
                                                         .toList(),
@@ -1566,11 +1629,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         notificationTitle:
                                             'Activity timer ended',
                                         notificationText:
-                                            '${currentUserDisplayName} has not stopped their timer for ${_model.startNotification?.selectedActivityName} (${_model.startNotification?.selectedActivityTime}mins)',
+                                            '$currentUserDisplayName has not stopped their timer for ${_model.startNotification?.selectedActivityName} (${_model.startNotification?.selectedActivityTime}mins)',
                                         notificationSound: 'default',
                                         userRefs: (currentUserDocument
                                                     ?.contactList
-                                                    ?.toList() ??
+                                                    .toList() ??
                                                 [])
                                             .toList(),
                                         initialPageName: 'HomePage',
@@ -1609,7 +1672,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     if (!FFAppState().activityStarted)
                                       SliderTheme(
-                                        data: SliderThemeData(
+                                        data: const SliderThemeData(
                                           showValueIndicator:
                                               ShowValueIndicator.always,
                                         ),
@@ -1684,7 +1747,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Container(
                     width: double.infinity,
                     height: 80.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFF111111),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
@@ -1701,7 +1764,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           borderRadius: 20.0,
                           borderWidth: 0.0,
                           buttonSize: 40.0,
-                          disabledIconColor: Color(0x65F1F4F8),
+                          disabledIconColor: const Color(0x65F1F4F8),
                           icon: FaIcon(
                             FontAwesomeIcons.route,
                             color: FlutterFlowTheme.of(context).info,
@@ -1713,7 +1776,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   context.pushNamed(
                                     'routeList',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.leftToRight,
@@ -1730,7 +1793,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               borderWidth: 1.0,
                               buttonSize: 60.0,
                               fillColor: FlutterFlowTheme.of(context).primary,
-                              disabledIconColor: Color(0x67F1F4F8),
+                              disabledIconColor: const Color(0x67F1F4F8),
                               icon: Icon(
                                 Icons.navigation_rounded,
                                 color: FlutterFlowTheme.of(context).info,
@@ -1751,7 +1814,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           borderRadius: 20.0,
                           borderWidth: 0.0,
                           buttonSize: 40.0,
-                          disabledIconColor: Color(0x65F1F4F8),
+                          disabledIconColor: const Color(0x65F1F4F8),
                           icon: FaIcon(
                             FontAwesomeIcons.cog,
                             color: FlutterFlowTheme.of(context).info,
@@ -1773,7 +1836,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     child: wrapWithModel(
                       model: _model.setupContainerModel,
                       updateCallback: () => setState(() {}),
-                      child: SetupContainerWidget(),
+                      child: const SetupContainerWidget(),
                     ).animateOnPageLoad(
                         animationsMap['setupContainerOnPageLoadAnimation']!),
                   ),

@@ -65,6 +65,20 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
+          "fieldPath": "isRead",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "contactList",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
           "fieldPath": "contactID",
           "order": "ASCENDING"
         },

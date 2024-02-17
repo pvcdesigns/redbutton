@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -16,7 +15,7 @@ class GeoCodeReverseCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GeoCodeReverse',
       apiUrl:
-          'https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}',
+          'https://geocode.maps.co/reverse?lat=$latitude&lon=$longitude',
       callType: ApiCallType.GET,
       headers: {},
       params: {},

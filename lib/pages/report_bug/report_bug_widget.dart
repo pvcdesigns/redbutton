@@ -4,17 +4,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'report_bug_model.dart';
 export 'report_bug_model.dart';
 
 class ReportBugWidget extends StatefulWidget {
-  const ReportBugWidget({Key? key}) : super(key: key);
+  const ReportBugWidget({super.key});
 
   @override
-  _ReportBugWidgetState createState() => _ReportBugWidgetState();
+  State<ReportBugWidget> createState() => _ReportBugWidgetState();
 }
 
 class _ReportBugWidgetState extends State<ReportBugWidget> {
@@ -79,19 +78,19 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: Padding(
-          padding: EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
+                alignment: const AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Text(
                     'Please help us make this app better by reporting any bugs or issues with the use of this app.',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -102,7 +101,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: AuthUserStreamWidget(
                   builder: (context) => TextFormField(
                     controller: _model.yourNameController,
@@ -149,7 +148,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       contentPadding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium,
                     validator:
@@ -158,7 +157,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: TextFormField(
                   controller: _model.emailController,
                   focusNode: _model.emailFocusNode,
@@ -203,7 +202,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                     filled: true,
                     fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium,
                   validator:
@@ -211,7 +210,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: TextFormField(
                   controller: _model.buginfoController,
                   focusNode: _model.buginfoFocusNode,
@@ -260,7 +259,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                     filled: true,
                     fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium,
                   textAlign: TextAlign.start,
@@ -271,9 +270,9 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.05),
+                alignment: const AlignmentDirectional(0.0, 0.05),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await launchUrl(Uri(
@@ -301,7 +300,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                                   fontSize: 14.0,
                                 ),
                           ),
-                          duration: Duration(milliseconds: 4000),
+                          duration: const Duration(milliseconds: 4000),
                           backgroundColor:
                               FlutterFlowTheme.of(context).primaryText,
                         ),
@@ -312,9 +311,9 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                       width: 370.0,
                       height: 45.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleMedium.override(
@@ -323,7 +322,7 @@ class _ReportBugWidgetState extends State<ReportBugWidget> {
                                 fontSize: 16.0,
                               ),
                       elevation: 2.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

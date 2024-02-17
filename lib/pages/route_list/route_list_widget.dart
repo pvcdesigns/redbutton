@@ -5,23 +5,21 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:map_launcher/map_launcher.dart' as $ml;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'route_list_model.dart';
 export 'route_list_model.dart';
 
 class RouteListWidget extends StatefulWidget {
-  const RouteListWidget({Key? key}) : super(key: key);
+  const RouteListWidget({super.key});
 
   @override
-  _RouteListWidgetState createState() => _RouteListWidgetState();
+  State<RouteListWidget> createState() => _RouteListWidgetState();
 }
 
 class _RouteListWidgetState extends State<RouteListWidget> {
@@ -69,7 +67,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
           iconTheme: IconThemeData(color: FlutterFlowTheme.of(context).info),
           automaticallyImplyLeading: true,
           title: Align(
-            alignment: AlignmentDirectional(-1.0, 0.0),
+            alignment: const AlignmentDirectional(-1.0, 0.0),
             child: Text(
               'Activity Records',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -79,11 +77,12 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                   ),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -94,7 +93,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                 ),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -103,7 +102,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Text(
                               'Filter by activity',
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -112,7 +111,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: StreamBuilder<List<ActivityListRecord>>(
                           stream: queryActivityListRecord(
                             queryBuilder: (activityListRecord) =>
@@ -142,9 +141,9 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                 containerActivityListRecordList =
                                 snapshot.data!;
                             return Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 5.0),
                                 child: FlutterFlowChoiceChips(
                                   options: containerActivityListRecordList
@@ -219,7 +218,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                 ),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 25.0, 25.0),
+                      const EdgeInsetsDirectional.fromSTEB(25.0, 10.0, 25.0, 25.0),
                   child: StreamBuilder<List<RouteListRecord>>(
                     stream: queryRouteListRecord(
                       queryBuilder: (routeListRecord) => routeListRecord
@@ -248,7 +247,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                       List<RouteListRecord> columnRouteListRecordList =
                           snapshot.data!;
                       if (columnRouteListRecordList.isEmpty) {
-                        return NoActivityRecordWidget();
+                        return const NoActivityRecordWidget();
                       }
                       return SingleChildScrollView(
                         child: Column(
@@ -258,7 +257,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                             final columnRouteListRecord =
                                 columnRouteListRecordList[columnIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -280,7 +279,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(10.0),
                                         bottomRight: Radius.circular(10.0),
                                         topLeft: Radius.circular(0.0),
@@ -288,14 +287,14 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 15.0, 15.0, 10.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -328,7 +327,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -388,13 +387,13 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                               ],
                                             ),
                                           ),
-                                          Divider(
+                                          const Divider(
                                             thickness: 1.0,
                                             color: Color(0x7FA2A2A2),
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 8.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -409,7 +408,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       MediaQuery.sizeOf(context)
                                                               .width *
                                                           0.4,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -419,7 +418,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -438,7 +437,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -465,7 +464,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         1.0,
                                                                         0.0,
@@ -481,7 +480,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -537,7 +536,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                               false)
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -555,7 +554,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     15.0,
@@ -616,7 +615,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       MediaQuery.sizeOf(context)
                                                               .width *
                                                           0.37,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -642,7 +641,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -671,7 +670,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     2.0,
                                                                     0.0,
@@ -720,7 +719,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     20.0,
@@ -754,7 +753,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -783,7 +782,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     2.0,
                                                                     0.0,
@@ -836,7 +835,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                               ],
                                             ),
                                           ),
-                                          Divider(
+                                          const Divider(
                                             thickness: 1.0,
                                             color: Color(0x7FA2A2A2),
                                           ),
@@ -852,7 +851,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.4,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -880,9 +879,9 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                                   builder:
                                                                       (alertDialogContext) {
                                                                     return AlertDialog(
-                                                                      title: Text(
+                                                                      title: const Text(
                                                                           'Deleting Record'),
-                                                                      content: Text(
+                                                                      content: const Text(
                                                                           'You are about to delete this activity record. Are you sure?'),
                                                                       actions: [
                                                                         TextButton(
@@ -890,14 +889,14 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                                               alertDialogContext,
                                                                               false),
                                                                           child:
-                                                                              Text('Cancel'),
+                                                                              const Text('Cancel'),
                                                                         ),
                                                                         TextButton(
                                                                           onPressed: () => Navigator.pop(
                                                                               alertDialogContext,
                                                                               true),
                                                                           child:
-                                                                              Text('Confirm'),
+                                                                              const Text('Confirm'),
                                                                         ),
                                                                       ],
                                                                     );
@@ -930,7 +929,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                                           14.0,
                                                                     ),
                                                               ),
-                                                              duration: Duration(
+                                                              duration: const Duration(
                                                                   milliseconds:
                                                                       4000),
                                                               backgroundColor:
@@ -947,7 +946,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                               ),
                                               Container(
                                                 width: 125.0,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -956,7 +955,7 @@ class _RouteListWidgetState extends State<RouteListWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,

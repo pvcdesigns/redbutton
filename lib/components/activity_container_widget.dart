@@ -4,19 +4,16 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'activity_container_model.dart';
 export 'activity_container_model.dart';
 
 class ActivityContainerWidget extends StatefulWidget {
-  const ActivityContainerWidget({Key? key}) : super(key: key);
+  const ActivityContainerWidget({super.key});
 
   @override
-  _ActivityContainerWidgetState createState() =>
+  State<ActivityContainerWidget> createState() =>
       _ActivityContainerWidgetState();
 }
 
@@ -50,7 +47,7 @@ class _ActivityContainerWidgetState extends State<ActivityContainerWidget> {
 
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -92,12 +89,12 @@ class _ActivityContainerWidgetState extends State<ActivityContainerWidget> {
                     children: [
                       Container(
                         width: 260.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 10.0, 0.0),
                               child: Text(
                                 columnActivityListRecord.activity,
@@ -120,13 +117,13 @@ class _ActivityContainerWidgetState extends State<ActivityContainerWidget> {
                       ),
                       Container(
                         width: 80.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderRadius: 50.0,
                                 borderWidth: 0.0,
@@ -153,7 +150,7 @@ class _ActivityContainerWidgetState extends State<ActivityContainerWidget> {
                                               fontSize: 14.0,
                                             ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .primaryText,

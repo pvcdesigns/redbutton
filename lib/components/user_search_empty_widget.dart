@@ -1,17 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'user_search_empty_model.dart';
 export 'user_search_empty_model.dart';
 
 class UserSearchEmptyWidget extends StatefulWidget {
-  const UserSearchEmptyWidget({Key? key}) : super(key: key);
+  const UserSearchEmptyWidget({super.key});
 
   @override
-  _UserSearchEmptyWidgetState createState() => _UserSearchEmptyWidgetState();
+  State<UserSearchEmptyWidget> createState() => _UserSearchEmptyWidgetState();
 }
 
 class _UserSearchEmptyWidgetState extends State<UserSearchEmptyWidget> {
@@ -47,7 +45,7 @@ class _UserSearchEmptyWidgetState extends State<UserSearchEmptyWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Align(
-          alignment: AlignmentDirectional(-1.0, 0.0),
+          alignment: const AlignmentDirectional(-1.0, 0.0),
           child: InkWell(
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,
@@ -57,7 +55,7 @@ class _UserSearchEmptyWidgetState extends State<UserSearchEmptyWidget> {
               context.pushNamed(
                 'inviteFriends',
                 extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
+                  kTransitionInfoKey: const TransitionInfo(
                     hasTransition: true,
                     transitionType: PageTransitionType.rightToLeft,
                   ),

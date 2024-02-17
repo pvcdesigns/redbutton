@@ -7,26 +7,22 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'activity_not_stopped_model.dart';
 export 'activity_not_stopped_model.dart';
 
 class ActivityNotStoppedWidget extends StatefulWidget {
   const ActivityNotStoppedWidget({
-    Key? key,
+    super.key,
     this.locationName,
-  }) : super(key: key);
+  });
 
   final String? locationName;
 
   @override
-  _ActivityNotStoppedWidgetState createState() =>
+  State<ActivityNotStoppedWidget> createState() =>
       _ActivityNotStoppedWidgetState();
 }
 
@@ -44,15 +40,15 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
           curve: Curves.bounceOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(1.0, 1.0),
+          begin: const Offset(0.0, 0.0),
+          end: const Offset(1.0, 1.0),
         ),
         ShakeEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 800.ms,
           hz: 10,
-          offset: Offset(5.0, 0.0),
+          offset: const Offset(5.0, 0.0),
           rotation: 0.087,
         ),
       ],
@@ -103,13 +99,13 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                 size: 100.0,
               ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation']!),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.75,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                     child: Text(
                       'Timer not stopped in time!',
                       textAlign: TextAlign.center,
@@ -131,7 +127,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
               FFButtonWidget(
                 onPressed: () async {
                   currentUserLocationValue = await getCurrentUserLocation(
-                      defaultLocation: LatLng(0.0, 0.0));
+                      defaultLocation: const LatLng(0.0, 0.0));
                   _model.updatePage(() {
                     FFAppState().activityNotStopped = false;
                   });
@@ -163,7 +159,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                     ...mapToFirestore(
                       {
                         'contactList':
-                            (currentUserDocument?.contactList?.toList() ?? [])
+                            (currentUserDocument?.contactList.toList() ?? [])
                                 .map((e) => e.id)
                                 .toList(),
                       },
@@ -189,7 +185,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                     ...mapToFirestore(
                       {
                         'contactList':
-                            (currentUserDocument?.contactList?.toList() ?? [])
+                            (currentUserDocument?.contactList.toList() ?? [])
                                 .map((e) => e.id)
                                 .toList(),
                       },
@@ -198,7 +194,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        '\"I\'m Good\" notice has been sent!',
+                        '"I\'m Good" notice has been sent!',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Readex Pro',
                               color: FlutterFlowTheme.of(context)
@@ -206,16 +202,16 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                               fontSize: 14.0,
                             ),
                       ),
-                      duration: Duration(milliseconds: 4000),
+                      duration: const Duration(milliseconds: 4000),
                       backgroundColor: FlutterFlowTheme.of(context).primaryText,
                     ),
                   );
                   triggerPushNotification(
                     notificationTitle: 'I\'m Good!',
                     notificationText:
-                        '${currentUserDisplayName} has confirmed they are safe.',
+                        '$currentUserDisplayName has confirmed they are safe.',
                     notificationSound: 'default',
-                    userRefs: (currentUserDocument?.contactList?.toList() ?? [])
+                    userRefs: (currentUserDocument?.contactList.toList() ?? [])
                         .toList(),
                     initialPageName: 'HomePage',
                     parameterData: {},
@@ -224,23 +220,23 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                   setState(() {});
                 },
                 text: 'I\'m GOOD',
-                icon: Icon(
+                icon: const Icon(
                   Icons.thumb_up,
                   size: 15.0,
                 ),
                 options: FFButtonOptions(
                   width: 270.0,
                   height: 45.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).info,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
-                        color: Color(0xFF111111),
+                        color: const Color(0xFF111111),
                       ),
                   elevation: 3.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
@@ -248,11 +244,11 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     currentUserLocationValue = await getCurrentUserLocation(
-                        defaultLocation: LatLng(0.0, 0.0));
+                        defaultLocation: const LatLng(0.0, 0.0));
                     _model.updatePage(() {
                       FFAppState().activityNotStopped = false;
                     });
@@ -286,7 +282,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                       ...mapToFirestore(
                         {
                           'contactList':
-                              (currentUserDocument?.contactList?.toList() ?? [])
+                              (currentUserDocument?.contactList.toList() ?? [])
                                   .map((e) => e.id)
                                   .toList(),
                         },
@@ -314,7 +310,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                       ...mapToFirestore(
                         {
                           'contactList':
-                              (currentUserDocument?.contactList?.toList() ?? [])
+                              (currentUserDocument?.contactList.toList() ?? [])
                                   .map((e) => e.id)
                                   .toList(),
                         },
@@ -335,7 +331,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                                     fontSize: 14.0,
                                   ),
                         ),
-                        duration: Duration(milliseconds: 4000),
+                        duration: const Duration(milliseconds: 4000),
                         backgroundColor:
                             FlutterFlowTheme.of(context).primaryText,
                       ),
@@ -343,10 +339,10 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                     triggerPushNotification(
                       notificationTitle: 'SOS! I need HELP',
                       notificationText:
-                          '${currentUserDisplayName} has confirmed an SOS and needs help! Please contact them now: ${currentPhoneNumber}',
+                          '$currentUserDisplayName has confirmed an SOS and needs help! Please contact them now: $currentPhoneNumber',
                       notificationSound: 'default',
                       userRefs:
-                          (currentUserDocument?.contactList?.toList() ?? [])
+                          (currentUserDocument?.contactList.toList() ?? [])
                               .toList(),
                       initialPageName: 'HomePage',
                       parameterData: {},
@@ -355,7 +351,7 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                     setState(() {});
                   },
                   text: 'I need HELP now!',
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.medical_services,
                     size: 15.0,
                   ),
@@ -363,16 +359,16 @@ class _ActivityNotStoppedWidgetState extends State<ActivityNotStoppedWidget>
                     width: 270.0,
                     height: 100.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFF111111),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: const Color(0xFF111111),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).info,
                         ),
                     elevation: 3.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

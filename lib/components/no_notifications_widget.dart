@@ -1,17 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'no_notifications_model.dart';
 export 'no_notifications_model.dart';
 
 class NoNotificationsWidget extends StatefulWidget {
-  const NoNotificationsWidget({Key? key}) : super(key: key);
+  const NoNotificationsWidget({super.key});
 
   @override
-  _NoNotificationsWidgetState createState() => _NoNotificationsWidgetState();
+  State<NoNotificationsWidget> createState() => _NoNotificationsWidgetState();
 }
 
 class _NoNotificationsWidgetState extends State<NoNotificationsWidget> {
@@ -43,7 +41,7 @@ class _NoNotificationsWidgetState extends State<NoNotificationsWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 20.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 20.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(

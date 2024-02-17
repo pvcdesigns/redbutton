@@ -1,23 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/activity_container_widget.dart';
 import '/components/contact_list_row_widget.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'setup_container_widget.dart' show SetupContainerWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class SetupContainerModel extends FlutterFlowModel<SetupContainerWidget> {
   ///  State fields for stateful widgets in this component.
@@ -65,7 +53,7 @@ class SetupContainerModel extends FlutterFlowModel<SetupContainerWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController;
 
-  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  // Stores action output result for [Backend Call - Create Document] action in Row widget.
   ActivityListRecord? customActivity2;
   // Model for activityContainer component.
   late ActivityContainerModel activityContainerModel;
@@ -89,12 +77,14 @@ class SetupContainerModel extends FlutterFlowModel<SetupContainerWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     activityContainerModel =
         createModel(context, () => ActivityContainerModel());
     contactListRowModel = createModel(context, () => ContactListRowModel());
   }
 
+  @override
   void dispose() {
     phoneNumberFocusNode?.dispose();
     phoneNumberController?.dispose();

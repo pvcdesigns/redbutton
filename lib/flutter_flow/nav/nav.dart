@@ -1,23 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -82,92 +75,107 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
+          routes: [
+            FFRoute(
+              name: 'HomePage',
+              path: 'homePage',
+              requireAuth: true,
+              asyncParams: {
+                'notifications':
+                    getDoc(['notifications'], NotificationsRecord.fromSnapshot),
+                'selectedContactList':
+                    getDoc(['contactList'], ContactListRecord.fromSnapshot),
+                'routeList':
+                    getDoc(['routeList'], RouteListRecord.fromSnapshot),
+              },
+              builder: (context, params) => HomePageWidget(
+                notifications:
+                    params.getParam('notifications', ParamType.Document),
+                selectedContactList:
+                    params.getParam('selectedContactList', ParamType.Document),
+                activityList: params.getParam('activityList',
+                    ParamType.DocumentReference, false, ['activityList']),
+                routeList: params.getParam('routeList', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'login',
+              path: 'login',
+              builder: (context, params) => const LoginWidget(),
+            ),
+            FFRoute(
+              name: 'forgotPassword',
+              path: 'forgotPassword',
+              requireAuth: true,
+              builder: (context, params) => const ForgotPasswordWidget(),
+            ),
+            FFRoute(
+              name: 'activityList',
+              path: 'activityList',
+              requireAuth: true,
+              builder: (context, params) => ActivityListWidget(
+                activity: params.getParam('activity', ParamType.String),
+                isChecked: params.getParam('isChecked', ParamType.bool),
+              ),
+            ),
+            FFRoute(
+              name: 'settings',
+              path: 'settings',
+              requireAuth: true,
+              builder: (context, params) => const SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'editProfile',
+              path: 'editProfile',
+              requireAuth: true,
+              builder: (context, params) => const EditProfileWidget(),
+            ),
+            FFRoute(
+              name: 'contactList',
+              path: 'contactList',
+              requireAuth: true,
+              asyncParams: {
+                'notifications':
+                    getDoc(['notifications'], NotificationsRecord.fromSnapshot),
+              },
+              builder: (context, params) => ContactListWidget(
+                notifications:
+                    params.getParam('notifications', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'inviteFriends',
+              path: 'inviteFriends',
+              requireAuth: true,
+              builder: (context, params) => const InviteFriendsWidget(),
+            ),
+            FFRoute(
+              name: 'tutorial',
+              path: 'tutorial',
+              requireAuth: true,
+              builder: (context, params) => const TutorialWidget(),
+            ),
+            FFRoute(
+              name: 'routeList',
+              path: 'routeList',
+              requireAuth: true,
+              builder: (context, params) => const RouteListWidget(),
+            ),
+            FFRoute(
+              name: 'reportBug',
+              path: 'reportBug',
+              requireAuth: true,
+              builder: (context, params) => const ReportBugWidget(),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          asyncParams: {
-            'notifications':
-                getDoc(['notifications'], NotificationsRecord.fromSnapshot),
-            'selectedContactList':
-                getDoc(['contactList'], ContactListRecord.fromSnapshot),
-            'routeList': getDoc(['routeList'], RouteListRecord.fromSnapshot),
-          },
-          builder: (context, params) => HomePageWidget(
-            notifications: params.getParam('notifications', ParamType.Document),
-            selectedContactList:
-                params.getParam('selectedContactList', ParamType.Document),
-            activityList: params.getParam('activityList',
-                ParamType.DocumentReference, false, ['activityList']),
-            routeList: params.getParam('routeList', ParamType.Document),
-          ),
-        ),
-        FFRoute(
-          name: 'login',
-          path: '/login',
-          builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
-          name: 'forgotPassword',
-          path: '/forgotPassword',
-          builder: (context, params) => ForgotPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'activityList',
-          path: '/activityList',
-          builder: (context, params) => ActivityListWidget(
-            activity: params.getParam('activity', ParamType.String),
-            isChecked: params.getParam('isChecked', ParamType.bool),
-          ),
-        ),
-        FFRoute(
-          name: 'settings',
-          path: '/settings',
-          builder: (context, params) => SettingsWidget(),
-        ),
-        FFRoute(
-          name: 'editProfile',
-          path: '/editProfile',
-          builder: (context, params) => EditProfileWidget(),
-        ),
-        FFRoute(
-          name: 'contactList',
-          path: '/contactList',
-          asyncParams: {
-            'notifications':
-                getDoc(['notifications'], NotificationsRecord.fromSnapshot),
-          },
-          builder: (context, params) => ContactListWidget(
-            notifications: params.getParam('notifications', ParamType.Document),
-          ),
-        ),
-        FFRoute(
-          name: 'inviteFriends',
-          path: '/inviteFriends',
-          builder: (context, params) => InviteFriendsWidget(),
-        ),
-        FFRoute(
-          name: 'tutorial',
-          path: '/tutorial',
-          builder: (context, params) => TutorialWidget(),
-        ),
-        FFRoute(
-          name: 'routeList',
-          path: '/routeList',
-          builder: (context, params) => RouteListWidget(),
-        ),
-        FFRoute(
-          name: 'reportBug',
-          path: '/reportBug',
-          builder: (context, params) => ReportBugWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -401,7 +409,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

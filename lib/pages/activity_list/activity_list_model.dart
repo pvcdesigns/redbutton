@@ -1,17 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/activity_container_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'activity_list_widget.dart' show ActivityListWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ActivityListModel extends FlutterFlowModel<ActivityListWidget> {
   ///  State fields for stateful widgets in this page.
@@ -47,13 +39,14 @@ class ActivityListModel extends FlutterFlowModel<ActivityListWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController;
 
-  // Stores action output result for [Backend Call - Create Document] action in Row widget.
+  // Stores action output result for [Backend Call - Create Document] action in Container widget.
   ActivityListRecord? customActivity2Copy;
   // Model for activityContainer component.
   late ActivityContainerModel activityContainerModel;
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
     textController2Validator = _textController2Validator;
@@ -61,6 +54,7 @@ class ActivityListModel extends FlutterFlowModel<ActivityListWidget> {
         createModel(context, () => ActivityContainerModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode1?.dispose();
